@@ -76,6 +76,9 @@ echo "📥 Downloading r3con script..."
 curl -o ~/r3con.sh https://raw.githubusercontent.com/durgeshw22/r3con/main/r3con/r3con.sh
 chmod +x ~/r3con.sh
 
+# Also create a symlink in /usr/local/bin for global access
+sudo ln -sf ~/r3con.sh /usr/local/bin/r3con 2>/dev/null || true
+
 # Clean up
 echo "🧹 Cleaning up temporary files..."
 cd /
@@ -84,7 +87,11 @@ rm -rf "$TEMP_DIR"
 echo ""
 echo "✅ Installation complete!"
 echo ""
-echo "🎯 Usage: ~/r3con.sh <domain> [params]"
+echo "🎯 Usage Options:"
+echo "   ~/r3con.sh <domain>     # Run from anywhere"
+echo "   r3con <domain>          # Global command (if symlink worked)"
+echo ""
+echo "📍 Script Location: ~/r3con.sh"
 echo ""
 echo "📊 Installed tools:"
 echo "- subfinder: $(/usr/local/bin/subfinder -version 2>/dev/null | head -1 || echo 'installed')"
