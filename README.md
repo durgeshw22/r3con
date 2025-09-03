@@ -308,10 +308,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [003random](https://github.com/003random) - getJS  
 - [sensepost](https://github.com/sensepost) - gowitness
 
-## 📞 Support
-
-- **Issues**: [GitHub Issues](https://github.com/durgeshw22/r3con/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/durgeshw22/r3con/discussions)
 
 ---
 
