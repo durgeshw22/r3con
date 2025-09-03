@@ -10,28 +10,29 @@ sudo apt update
 sudo apt install -y git curl wget unzip
 
 # Create temporary directory
-cd /tmp
+TEMP_DIR=$(mktemp -d)
+cd "$TEMP_DIR"
 
 echo "🔧 Installing reconnaissance tools..."
 
 # Install subfinder
 echo "Installing subfinder..."
 wget -q https://github.com/projectdiscovery/subfinder/releases/download/v2.8.0/subfinder_2.8.0_linux_amd64.zip
-unzip -q subfinder_2.8.0_linux_amd64.zip
+unzip -o -q subfinder_2.8.0_linux_amd64.zip
 sudo mv subfinder /usr/local/bin/
 sudo chmod +x /usr/local/bin/subfinder
 
 # Install httpx
 echo "Installing httpx..."
 wget -q https://github.com/projectdiscovery/httpx/releases/download/v1.7.1/httpx_1.7.1_linux_amd64.zip
-unzip -q httpx_1.7.1_linux_amd64.zip
+unzip -o -q httpx_1.7.1_linux_amd64.zip
 sudo mv httpx /usr/local/bin/
 sudo chmod +x /usr/local/bin/httpx
 
 # Install nuclei
 echo "Installing nuclei..."
 wget -q https://github.com/projectdiscovery/nuclei/releases/download/v3.4.10/nuclei_3.4.10_linux_amd64.zip
-unzip -q nuclei_3.4.10_linux_amd64.zip
+unzip -o -q nuclei_3.4.10_linux_amd64.zip
 sudo mv nuclei /usr/local/bin/
 sudo chmod +x /usr/local/bin/nuclei
 
@@ -61,7 +62,8 @@ chmod +x ~/r3con.sh
 
 # Clean up
 echo "🧹 Cleaning up temporary files..."
-rm -f *.zip *.tgz getJS-linux-amd64 gowitness-*
+cd /
+rm -rf "$TEMP_DIR"
 
 echo ""
 echo "✅ Installation complete!"
@@ -69,9 +71,9 @@ echo ""
 echo "🎯 Usage: ~/r3con.sh <domain> [params]"
 echo ""
 echo "📊 Installed tools:"
-echo "- subfinder: $(subfinder -version 2>/dev/null | head -1 || echo 'installed')"
-echo "- httpx: $(httpx -version 2>/dev/null | head -1 || echo 'installed')"
-echo "- nuclei: $(nuclei -version 2>/dev/null | head -1 || echo 'installed')"
+echo "- subfinder: $(/usr/local/bin/subfinder -version 2>/dev/null | head -1 || echo 'installed')"
+echo "- httpx: $(/usr/local/bin/httpx -version 2>/dev/null | head -1 || echo 'installed')"
+echo "- nuclei: $(/usr/local/bin/nuclei -version 2>/dev/null | head -1 || echo 'installed')"
 echo "- waybackurls: installed"
 echo "- getJS: installed"
 echo "- gowitness: installed"
