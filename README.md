@@ -92,7 +92,7 @@ r3con example.com
 
 ```
 
-```
+
     ____ _____ __________  _   __
    / __ \__  // ____/ __ \/ | / /
   / /_/ //_ </ /   / / / /  |/ /
@@ -110,7 +110,6 @@ r3con example.com
   / / / / / / / /_/ / / __ |   /\__ \/ /_/ /
  / /_/ / /_/ / _, _/ /_/ //   |___/ / __  /
 /_____/\____/_/ |_|\____//_/|_/____/_/ /_/
-```
 
 > **Respect is earned. Access is taken. Talk less. Scan more.**
 🔍 R3CON Reconnaissance Results:
