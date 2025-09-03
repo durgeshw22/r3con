@@ -50,9 +50,9 @@ wget -q https://github.com/003random/getJS/releases/download/v1.0/getJS-linux-am
 sudo cp getJS /usr/local/bin/
 sudo chmod +x /usr/local/bin/getJS
 
-# Install gowitness
+# Install gowitness (using latest version that supports file scanning)
 echo "Installing gowitness..."
-wget -q https://github.com/sensepost/gowitness/releases/download/2.5.1/gowitness-2.5.1-linux-amd64 -O gowitness
+wget -q https://github.com/sensepost/gowitness/releases/download/3.0.5/gowitness-3.0.5-linux-amd64 -O gowitness
 sudo cp gowitness /usr/local/bin/
 sudo chmod +x /usr/local/bin/gowitness
 
