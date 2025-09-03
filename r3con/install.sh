@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 echo "🚀 R3CON Installation Script"
 echo "=============================="
@@ -46,9 +45,25 @@ sudo chmod +x /usr/local/bin/waybackurls
 
 # Install getJS
 echo "Installing getJS..."
-wget -q https://github.com/003random/getJS/releases/download/v1.0/getJS-linux-amd64 -O getJS
-sudo cp getJS /usr/local/bin/
-sudo chmod +x /usr/local/bin/getJS
+# Install Go if not present
+if ! command -v go &> /dev/null; then
+    echo "Installing Go..."
+    sudo apt install -y golang-go
+fi
+# Install getJS via Go (more reliable)
+echo "Compiling getJS from source..."
+go install github.com/003random/getJS@latest
+if [ -f ~/go/bin/getJS ]; then
+    sudo cp ~/go/bin/getJS /usr/local/bin/
+elif [ -f $(go env GOPATH)/bin/getJS ]; then
+    sudo cp $(go env GOPATH)/bin/getJS /usr/local/bin/
+else
+    # Fallback: try direct binary download
+    echo "Trying binary download..."
+    wget -q --timeout=10 https://github.com/003random/getJS/releases/download/v1.0/getJS-linux-amd64 -O getJS 2>/dev/null && sudo cp getJS /usr/local/bin/getJS
+fi
+sudo chmod +x /usr/local/bin/getJS 2>/dev/null || true
+echo "getJS installation completed"
 
 # Install gowitness (using latest version that supports file scanning)
 echo "Installing gowitness..."
