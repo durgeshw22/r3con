@@ -287,10 +287,6 @@ This tool is for **authorized testing only**. Users are responsible for complyin
 - Systems you have explicit permission to test
 - Bug bounty programs with proper scope
 
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 🏆 Credits
 
 **Developed by**: [@durgeshw22](https://github.com/durgeshw22)
